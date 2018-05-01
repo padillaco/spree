@@ -134,6 +134,14 @@ module Spree
       )
     end
 
+    def valid_card_verification_value?(cvv, brand)
+      cvv.to_s =~ /^\d{#{card_verification_value_length(brand)}}$/
+    end
+
+    def card_verification_value_length(brand)
+      brand == 'american_express' ? 4 : 3
+    end
+
     private
 
     def expiry_not_in_the_past
