@@ -5,7 +5,7 @@ module Spree
 
     before_save :set_last_digits
 
-    attr_accessor :number, :verification_value, :encrypted_data
+    attr_accessor :number, :verification_value, :encrypted_data, :track_data
 
     validates :month, :year, numericality: { only_integer: true }, if: :require_card_numbers?, on: :create
     validates :number, presence: true, if: :require_card_numbers?, on: :create
